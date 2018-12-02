@@ -2,15 +2,16 @@
 <?php
 while(true)
 {
-	
-
+$file = file_get_contents("link.txt");
+$ex = explode("\n", $file);
+$referer = $ex[array_rand($ex)];
 $file = file_get_contents("ua.txt");
 
 $ex = explode("\n", $file);
 
 $au = $ex[array_rand($ex)];
 
-echo $au."\n";
+echo "Referer : ".$referer."\n";
 
 fopen("x", "w");
 
@@ -34,7 +35,7 @@ $headers[] = "Connection: keep-alive";
 
 $headers[] = "Upgrade-Insecure-Requests: 1";
 
-curl_setopt($ch, CURLOPT_REFERER, 'https://infobitcoin.ml');
+curl_setopt($ch, CURLOPT_REFERER, $referer);
 
 curl_setopt($ch, CURLOPT_USERAGENT, $au);
 
@@ -148,7 +149,7 @@ if (curl_errno($ch)) {
 echo "Klik Iklan\n";
 curl_close($ch);
 }
-echo 'Ganti ip';
+echo 'Ganti ip Brow';
 sleep('4');
 }
 
